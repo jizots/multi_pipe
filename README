@@ -1,0 +1,24 @@
+This project is forcus to my univ's pipe subject.
+Subject requirement:
+	- ./pipex file1 cmd1 cmd2 file2 
+		behave like command [ < file1 cmd1 | cmd2 > file2 ]
+	- ./pipex here_doc LIMMITER cmd1 cmd2 file1
+		behave like command [ cmd1 << LIMITER | cmd2 >> file ]
+
+Your Profite
+	- Can understand how to make multiple pipe by repeat condition. (not recursive)
+	- Can understand how to make here_document mode without func getchar().
+
+For use
+	-by [make], you can get executable file <pipex> for multi pipe.
+	 Please input command like [./pipex file1 cmd1 cmd2 ... cmdn file2]
+	 	* cmd can change exit command. For example [ls] [echo].
+	-by [make bonus], you can get executable file <pipex> for here_document mode.
+	 Please input command like [./pipex here_doc LIMMITER cmd1 cmd2 file1]
+		* [LIMMITE] can change you like.
+
+Multi pipe strategy
+	- Declare two filediscriptor (ex.. pre_pipe & nxt_pipe).
+	- Make new pipe repeatedly.
+	  *not use repeat
+	- Please look a picture.
