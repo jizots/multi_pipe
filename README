@@ -1,24 +1,24 @@
-This project is forcus to my univ's pipe subject.
-Subject requirement:
-	- ./pipex file1 cmd1 cmd2 file2 
-		behave like command [ < file1 cmd1 | cmd2 > file2 ]
-	- ./pipex here_doc LIMMITER cmd1 cmd2 file1
-		behave like command [ cmd1 << LIMITER | cmd2 >> file ]
+# Pipex Project README
 
-Your Profite
-	- Can understand how to make multiple pipe by repeat condition. (not recursive)
-	- Can understand how to make here_document mode without func getchar().
+## Overview
+The Pipex project simulates the behavior of the Unix pipe command in a C program, allowing for the redirection of output from one command as input to another.  
+It's an educational exercise to understand process creation, inter-process communication, and the use of file descriptors in Unix-like systems.  
 
-For use
-	-by [make], you can get executable file <pipex> for multi pipe.
-	 Please input command like [./pipex file1 cmd1 cmd2 ... cmdn file2]
-	 	* cmd can change exit command. For example [ls] [echo].
-	-by [make bonus], you can get executable file <pipex> for here_document mode.
-	 Please input command like [./pipex here_doc LIMMITER cmd1 cmd2 file1]
-		* [LIMMITE] can change you like.
+## Key Features
+Executes commands with their parameters, redirecting the output of the first command to the input of the second command.  
+Handles file input and output, simulating the shell command < file1 cmd1 | cmd2 > file2.  
+Implements error handling and memory management to prevent leaks and crashes.  
 
-Multi pipe strategy
-	- Declare two filediscriptor (ex.. pre_pipe & nxt_pipe).
-	- Make new pipe repeatedly.
-	  *not use repeat
-	- Please look a picture.
+## Bonus Features
+Handling of multiple pipes, allowing for a sequence of commands to be executed in a pipeline.  
+Support for "here_doc" functionality, simulating the << and >> bash operators for input redirection.  
+
+## Skills Acquired
+Mastery of Unix process creation and management, including forking and using pipes for IPC.  
+Understanding of file descriptor manipulation for input and output redirection.  
+Advanced error handling and memory management in C programming.  
+
+## Usage
+Compile with make and run with  
+``./pipex file1 'cmd1' 'cmd2' file2``  
+For bonus features, follow the project's specifications for multiple commands or "here_doc" functionality.
